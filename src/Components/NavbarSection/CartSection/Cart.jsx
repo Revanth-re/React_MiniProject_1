@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import './Cart.css';
-import { Table } from 'react-bootstrap';
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -11,10 +10,11 @@ const Cart = () => {
   }, []);
 
   const handleRemove = (indexToRemove) => {
-    confirm("Are you sure to remove item")
-    const updated = cartItems.filter((_, index) => index !== indexToRemove);
-    setCartItems(updated);
-    localStorage.setItem('cartItems', JSON.stringify(updated));
+    if (window.confirm("Are you sure to remove item?")) {
+      const updated = cartItems.filter((_, index) => index !== indexToRemove);
+      setCartItems(updated);
+      localStorage.setItem('cartItems', JSON.stringify(updated));
+    }
   };
 
   return (
@@ -24,44 +24,57 @@ const Cart = () => {
       {cartItems.length === 0 ? (
         <p className="empty-cart">Your cart is empty.</p>
       ) : (
-        <Table striped bordered hover responsive className="cart-table">
-          <thead>
-            <tr>
-              <th>Sl. No</th>
-              <th>Title</th>
-              <th>Color</th>
-              <th>Brand</th>
-              <th>Image</th>
-              <th>Price</th>
-              <th>Remove</th>
-            </tr>
-          </thead>
-          <tbody>
+        <>
+          {/* Desktop Table View */}
+          <div className="cart-table-container">
+            <table className="cart-table">
+              <thead>
+                <tr>
+                  <th>Sl. No</th>
+                  <th>Title</th>
+                  <th>Color</th>
+                  <th>Brand</th>
+                  <th>Image</th>
+                  <th>Price</th>
+                  <th>Remove</th>
+                </tr>
+              </thead>
+              <tbody>
+                {cartItems.map((val, index) => (
+                  <tr key={index}>
+                    <td>{index + 1}</td>
+                    <td>{val.title}</td>
+                    <td>{val.color}</td>
+                    <td>{val.brand}</td>
+                    <td>
+                      <img src={val.image} alt={val.title} className="cart-image" />
+                    </td>
+                    <td><strong>${val.price}</strong></td>
+                    <td>
+                      <button className="remove-btn" onClick={() => handleRemove(index)}>Remove</button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Mobile Card View */}
+          <div className="cart-card-grid">
             {cartItems.map((val, index) => (
-              <tr key={index}>
-                <td>{index + 1}</td>
-                <td>{val.title}</td>
-                <td>{val.color}</td>
-                <td>{val.brand}</td>
-                <td>
-                  <img
-                    src={val.image}
-                    alt={val.title}
-                    style={{ width: '80px', borderRadius: '6px' }}
-                  />
-                </td>
-                <td>
-                  <strong>${val.price}</strong>
-                </td>
-                <td>
-                  <button className="remove-btn" onClick={() => handleRemove(index)}>
-                    Remove
-                  </button>
-                </td>
-              </tr>
+              <div className="cart-card" key={index}>
+                <img src={val.image} alt={val.title} className="cart-card-image" />
+                <div className="cart-card-body">
+                  <h4>{val.title}</h4>
+                  <p><strong>Color:</strong> {val.color}</p>
+                  <p><strong>Brand:</strong> {val.brand}</p>
+                  <p><strong>Price:</strong> ${val.price}</p>
+                  <button className="remove-btn" onClick={() => handleRemove(index)}>Remove</button>
+                </div>
+              </div>
             ))}
-          </tbody>
-        </Table>
+          </div>
+        </>
       )}
     </div>
   );
