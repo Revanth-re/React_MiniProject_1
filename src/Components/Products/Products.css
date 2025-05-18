@@ -1,0 +1,13 @@
+.MainDiv{
+
+   display: grid; 
+   grid-template-columns: repeat(3,1fr);
+   padding: 5%;
+   gap: 20px;
+}
+@media (max-width:768px) {
+.MainDiv{
+   display: grid;
+   grid-template-columns: auto;
+}
+}

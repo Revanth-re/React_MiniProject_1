@@ -1,0 +1,70 @@
+/* Container styling */
+.container {
+  max-width: 90%;
+  margin: auto;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Table styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* Table headers */
+thead {
+  background-color: #007bff;
+  color: white;
+  text-align: center;
+}
+
+/* Table rows */
+tbody tr {
+  transition: background-color 0.2s ease;
+}
+
+tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Table cells */
+td, th {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Image cell */
+td img {
+  width: 80px;
+  border-radius: 6px;
+}
+
+/* Remove button */
+button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #c82333;
+}
+
+/* Empty message */
+h2 {
+  margin-top: 50px;
+  text-align: center;
+  color: #777;
+}
