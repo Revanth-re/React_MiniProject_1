@@ -1,18 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Fav.css';
 
 const Fav = () => {
+  const [Favdata,SetFavData]=useState([])
+
+  useEffect(()=>{
   const data = JSON.parse(localStorage.getItem("FavItems")) || [];
+  SetFavData(data)
+  },[])
+
 
   const removeHandle = (indexToRemove) => {
     if (window.confirm("Are you sure you want to remove this item?")) {
-      const updated = data.filter((_, index) => index !== indexToRemove);
+      const updated = Favdata.filter((_, index) => index !== indexToRemove);
       localStorage.setItem("FavItems", JSON.stringify(updated));
-      window.reload(); // Simulate state update
+      window.location.reload(); // Simulate state update
     }
   };
 
-  if (data.length === 0) {
+  if (Favdata.length === 0) {
     return <h2 className="empty-message">No Favorite Items Found</h2>;
   }
 
@@ -36,7 +42,7 @@ const Fav = () => {
             </tr>
           </thead>
           <tbody>
-            {data.map((val, index) => (
+            {Favdata.map((val, index) => (
               <tr key={index}>
                 <td>{index + 1}</td>
                 <td>{val.title}</td>
@@ -53,7 +59,7 @@ const Fav = () => {
 
       {/* Mobile Card View */}
       <div className="fav-card-grid">
-        {data.map((val, index) => (
+        {Favdata.map((val, index) => (
           <div className="fav-card" key={index}>
             <img src={val.image} alt={val.title} className="fav-card-image" />
             <div className="fav-card-body">
