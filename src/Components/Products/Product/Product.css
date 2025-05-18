@@ -43,6 +43,7 @@
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 10px;
+ 
 }
 
 @media (max-width: 576px) {
@@ -57,6 +58,7 @@
   }
 
   .product-buttons button {
+    
     width: 100%;
   }
 }
@@ -88,4 +90,15 @@
     flex: 1 1 100%; /* 1 per row on mobile */
     max-width: 100%;
   }
+}
+#btn20{
+  
+  background-color: #f4f41b;
+  color:black
+}
+#btn22{
+/* background-color: #ed1741 ; */
+/* font-weight: 900; */
+/* font-size: 2.rem; */
+
 }

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Card, ListGroup, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "./Product.css";
+import { GoHeart } from "react-icons/go";
 
 const Product = ({ rawData }) => {
   const [data,Setdata]=useState(true)
@@ -48,8 +49,8 @@ const Product = ({ rawData }) => {
         </ListGroup>
 
         <Card.Body className="product-buttons">
-          <Button variant="primary" onClick={(e) => handleAddToCart(e, prodData)}>Add to Cart</Button>
-          <Button variant="outline-secondary" onClick={(e) => handleAddToFavorites(e, prodData)}>Favorite</Button>
+          <Button  id='btn20' onClick={(e) => handleAddToCart(e, prodData)}>Add to Cart</Button>
+          <Button id='btn22'  onClick={(e) => handleAddToFavorites(e, prodData)}>Favorite</Button>
         </Card.Body>
       
       </Card>
