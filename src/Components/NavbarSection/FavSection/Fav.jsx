@@ -14,7 +14,7 @@ const Fav = () => {
     if (window.confirm("Are you sure you want to remove this item?")) {
       const updated = Favdata.filter((_, index) => index !== indexToRemove);
       localStorage.setItem("FavItems", JSON.stringify(updated));
-      window.location.reload(); // Simulate state update
+      // window.location.reload(); g// Simulate state update
     }
   };
 
