@@ -17,7 +17,10 @@ const Fav = () => {
   }
 
   return (
-    <div className="fav-container">
+
+    <div>
+      <h3 style={{textAlign:"center",marginBottom:"5%"}}>Your-Favourites</h3>
+    <div className="fav-container" >
       {/* Desktop Table View */}
       <div className="fav-table-container">
         <table className="fav-table">
@@ -63,6 +66,7 @@ const Fav = () => {
           </div>
         ))}
       </div>
+    </div>
     </div>
   );
 };
